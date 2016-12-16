@@ -1,0 +1,42 @@
+/*mask遮罩*/
+.loadmask {
+    z-index: 700;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -moz-opacity: .4;
+    opacity: .40;
+    filter: alpha( opacity = 40);
+	width:100%;
+	height:100%;
+	zoom:1;
+	display:none;
+}.loadmask-msg {
+    z-index: 20001;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #6593cf;
+    background: #c3daf9;
+    padding: 2px;
+}.loadmask-msg .mask_lading {
+    padding: 5px 10px 5px 25px;
+    background: #fbfbfb url('../../images/loading.gif') no-repeat 5px 5px;
+    line-height: 16px;
+    border: 1px solid #a3bad9;
+    color: #222;
+    cursor: wait;
+}.loadmask-msg .normal {
+    padding: 5px 10px 5px 10px;
+    background-color: #fbfbfb;
+    line-height: 16px;
+    border: 1px solid #a3bad9;
+    color: #222;
+	display:block;
+}.masked {
+    overflow: hidden !important;
+}.masked-relative {
+    position: relative !important;
+}.masked-hidden {
+    visibility: hidden !important;
+}

@@ -1,0 +1,76 @@
+
+body{font-family:微软雅黑} 
+.right_wrapper{width:100%; background-color:#FFF; padding-bottom:10px;}
+.top_box{height:30px; line-height:25px; border-bottom:1px dotted #CA1118; padding-top:5px;padding-top:2px;}
+
+.red{color:#FF0000;}
+.cur_position{float:left;padding:3px;font-size:13px;font-family:'微软雅黑'}
+.cur_position a{color:#666666;}
+.cur_position a:hover{ text-decoration:underline;}
+.cur_position strong{color:#ff0000;}
+.cur_position .red{color:#cc0000;}
+
+.top_div{padding:10px;margin-left:15px;}
+.form_list_box{background:#f8f8f8; border:1px solid #bfd8ea; padding:5px;margin-top:10px;padding:2px;margin-bottom:10px;margin-left:5px;}
+.form_list{padding:16px 16px 5px; margin-bottom:0px;}
+.form_list li{padding-left:100px; width:300px; height:25px;float:left; margin-bottom:5px;}
+.form_list .tit{margin-left:-104px; width:100px;display:inline-block; text-align:right;vertical-align:middle;}
+.form_list select{ height:23px; margin:0px;}
+
+<!-- 按钮样式 -->
+.button{
+width: 140px;
+line-height: 38px;
+text-align: center;
+font-weight: bold;
+color: #fff;
+text-shadow:1px 1px 1px #333;
+border-radius: 5px;
+margin:0 20px 20px 0;
+position: relative;
+overflow: hidden;
+}
+.button:nth-child(6n){
+margin-right: 0;
+}
+
+.button.green{
+border:1px solid #64c878;
+box-shadow: 0 1px 2px #b9ecc4 inset,0 -1px 0 #6c9f76 inset,0 -2px 3px #b9ecc4 inset;
+background: -webkit-linear-gradient(top,#90dfa2,#84d494);
+background: -moz-linear-gradient(top,#90dfa2,#84d494);
+background: linear-gradient(top,#90dfa2,#84d494);
+}
+
+a{text-decoration:none; color:#0099FF;}
+a:hover{text-decoration:underline;}
+a:focus {
+	outline:none;
+}
+a {
+ blr:expression(this.onFocus=this.blur());
+}
+
+.accordion-1 {   
+    padding: 4px;   
+    margin-left: -20px;   
+    margin-bottom: 3px;   
+    border:solid 1px #6e8bde;   
+    height: auto;
+    top: 23px;   
+    width: 92%; 
+    background-color:#FFFFFF;  
+}
+
+.alv-td-one{
+	height:24px;
+	border-bottom: 1px dotted #CCCCCC;
+    margin-top: 2px;
+    padding: 0;
+    width:100%;
+}
+
+.accordion-1 span:hover {
+	color: red;
+	background-color: #8ad0ff;
+}

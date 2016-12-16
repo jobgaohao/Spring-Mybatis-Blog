@@ -1,0 +1,70 @@
+
+.noteBox .close_tcg,.orderBtnFir,.orderBtnFir span{background:url(images/pro_OrderSprite.png) no-repeat;}/*背景sprite*/
+.cancelBtn,.cancelBtn span{background:url(images/sprite.png) no-repeat scroll 0 0 transparent}
+
+
+.orderBtnFir{display:inline-block;height:27px;padding-right:10px;background-position:100% 0;color:#fff;font-weight:bold;line-height:27px;}
+.orderBtnFir span{display:inline-block;height:27px;padding-left:10px;background-position:0 0;color:#fff;line-height:27px;cursor:pointer;}
+
+
+._un_btn,._un_btn span{display:inline-block;background:url(images/spritezx.png) no-repeat;cursor:pointer;}
+._btnOrange{height:26px;padding-right:25px;background-position:100% -25px;}
+._btnOrange span{line-height:26px;padding-left:25px;background-position:0 -25px;color:#fff;font-weight: bold;text-shadow:0 0 2px #d84803;}
+._btnGray{height:24px;padding-right:25px;background-position:100% -52px;}
+._btnGray span{line-height:24px;padding-left:25px;background-position:-1px -52px;color:#333;}
+
+.noteBoxbg{padding:3px;filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#33000000', endColorstr='#33000000');/* background-color:#C1C1C1; */}
+.noteBox{border:1px solid #c3d5df;background-color:#fff;}
+.noteBox .textTile{position:relative;}
+.noteBox .textTile h3{height:30px;padding-bottom:1px;border-bottom:1px solid #C4D5E0;background:url(images/BoxTitlebg.gif) repeat-x;color:#FFFFFF;font-size:12px;line-height:30px;text-indent:10px;}
+.noteBox .close_tcg{position:absolute;top:10px;right:10px;_right:20px;width:11px;height:11px;background-position:-172px -72px}
+.noteBox .textCon{padding:20px;color:#666;text-align:center;min-height:40px;}
+.noteBox .textCon p{padding:3px 0;line-height:20px;}
+.noteBox .textCon p strong{display:block;font-size:14px;line-height:24px;}
+
+.noteBoxFir{position:absolute;width:302px;z-index:99998;font:12px Arial, Helvetica, sans-serif;color:#333;}
+.noteBox-bottom{height:40px;text-align:center;}
+.noteBox .noteBox-bottom .message_btn{padding-top:20px;padding-bottom:20px;}
+.noteBox .textCon .enterTxt textarea{width:293px;height:135px;border:1px solid #b5b8c8;resize:none;}
+
+/**/
+body,p,form,input,button,dl,dt,dd,ul,ol,li,h1,h2,h3,h4{margin:0;padding:0;list-style:none;}
+
+
+
+
+.window-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  filter: alpha(opacity=20);
+  opacity: 0.20;
+  font-size: 1px;
+  *zoom: 1;
+  overflow: hidden;
+}
+.window-mask {
+  background: #ccc;
+}
+.window-mask-msg {
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  padding: 12px 5px 10px 30px;
+  width: auto;
+  height: 16px;
+  border-width: 2px;
+  border-style: solid;
+  display: none;
+}
+.window-mask-msg {
+  border-color: #95B8E7;
+}
+.window-mask-msg {
+  background: #ffffff url('../../images/loading.gif') no-repeat scroll 5px center;
+  /* background: #ffffff url('') no-repeat scroll 5px center; */
+}
+
+

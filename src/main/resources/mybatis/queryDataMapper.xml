@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dadahao.mapper.QueryDataMapper">
+
+	<sql id="selectinvoiceListColumn">
+		 select    distinct p.pkid as pkid,
+		 		   p.oppo_org_title_name as oppoOrgTitleName,
+			       p.department_name as departmentName,
+			       p.tot_weight as totWeight,
+			       p.tot_amt as totAmt,
+			       p.printno as printno,
+			       p.PRINT_INVOICE_CODE as printInvoiceCode,
+			       p.INVOICE_STATUS as invoiceStatus,
+			       p.DELIVERY_TYPE as deliveryType,
+			       p.SYSFROM as sysfrom,
+			       p.tax_no  as taxNo,
+			       p.remark as remark,
+			       p.printor_time as printorTime,
+			       p.invoice_type as invoiceType,
+			       p.DEPARTMENT_ID as departmentId,
+			       p.OPPO_ORG_TITLE_ID as oppoOrgTitleId,
+			       p.ORG_TITLE_ID as orgTitleId,
+			       p.CORE_INVOICE_CODE as coreInvoiceCode,
+			       p.added_time as addedTime
+		  from TOPT_AWAIT_ACTUAL_PRIINT p
+		 INNER JOIN TOPT_AWAIT_PRIINT_DTL pd
+		 ON p.pkid = pd.await_priint_id
+
+	</sql>
+
+	<!-- 销项发票余额查询条件 -->
+	<sql id="queryinvoiceList_WhereCondition">
+		<where>
+			p.VALID = 'T'
+			<if test="pkid !=null  and pkid != 0 ">
+				and p.PKID = #{pkid}
+			</if>
+			<if test="pkIdLists !=null  and pkIdLists.size() > 0 ">
+				and p.pkid in 
+				<foreach collection="pkIdLists" index="index" item="pkid" open="(" separator="," close=")"> 
+			  	 #{pkid} 
+			  	</foreach>
+			</if>
+			<if test="orgTitleId !=null  and orgTitleId != 0 ">
+				and p.ORG_TITLE_ID = #{orgTitleId}
+			</if>
+			<if test="customerId !=null and  customerId !='' ">
+				and p.OPPO_ORG_TITLE_ID =  #{customerId}
+			</if>
+			<if test="printInvoiceCodeStart !=null  and printInvoiceCodeStart !='' ">
+				and to_number(p.PRINT_INVOICE_CODE) >= to_number(#{printInvoiceCodeStart})
+			</if>
+			<if test="printInvoiceCodeEnd !=null and printInvoiceCodeEnd !=''">
+				and   to_number(#{printInvoiceCodeEnd}) >= to_number(p.PRINT_INVOICE_CODE)
+			</if>
+			<if test="orderCode !=null and  orderCode !='' ">
+				and pd.ORDER_CODE LIKE '%' || #{orderCode} || '%'
+			</if>
+			<if test="invoiceType !=null and invoiceType.size()>0 ">		  				
+		  		and p.INVOICE_TYPE in			  			
+			  	<foreach collection="invoiceType" index="index" item="invoiceT" open="(" separator="," close=")"> 
+			  	 #{invoiceT} 
+			  	</foreach>
+			  </if>
+			  <if test="invoiceStatus !=null and invoiceStatus.size()>0 ">		  				
+		  		and p.INVOICE_STATUS in			  			
+			  	<foreach collection="invoiceStatus" index="index" item="invoiceS" open="(" separator="," close=")"> 
+			  	 #{invoiceS} 
+			  	</foreach>
+			  </if>
+			  <if test="sysFrom !=null and sysFrom.size()>0 ">		  				
+		  		and p.SYSFROM in
+			  	<foreach collection="sysFrom" index="index" item="sysF" open="(" separator="," close=")"> 
+			  	 #{sysF} 
+			  	</foreach>
+			  </if>
+			  <if test="deliveryType !=null and deliveryType.size()>0 ">		  				
+		  		and p.DELIVERY_TYPE in			  			
+			  	<foreach collection="deliveryType" index="index" item="deliveryT" open="(" separator="," close=")"> 
+			  	 #{deliveryT} 
+			  	</foreach>
+			  </if>
+		</where>
+	</sql>
+
+	<!-- 销售发票记录 -->
+	<select id="queryForAwaitPrintInfoList" parameterType="com.dadahao.model.form.AwaitPrintInvoiceQueryForm"
+		resultType="com.dadahao.model.dto.ToptAwaitActualPriint">
+		select * from (
+		select temp.*,rownum rn from (
+		<include refid="selectinvoiceListColumn" />
+		<include refid="queryinvoiceList_WhereCondition" />				   	
+		<![CDATA[ order by p.ADDED_TIME desc ) temp where rownum <=#{end}  )
+			where rn >#{start}]]>
+	</select>
+
+</mapper>

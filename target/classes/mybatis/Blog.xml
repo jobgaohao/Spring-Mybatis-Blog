@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dadahao.mapper.IBlog">
+
+<!--查询列 -->
+<sql id="getBlogColumn">
+select pkid,
+       BLOGTEXT  "blogText",
+       blogHref  "blogHref",
+       blogContent "blogContent",
+       blogSummary "blogSummary",
+       remark "remark",
+       valid  "valid",
+       ADDED_TIME  "addedTime",
+       MODIFIED_TIME "modifiedTime"
+from tblogs a
+</sql>
+
+<!--查询条件 -->
+<sql id="queryCondiction">
+and a.valid='T'
+<if test="blogText !=null and  blogText!='' ">
+and a.blogText like '%' || #{blogText} || '%'
+</if>
+<if test="addDateBegin !=null and  addDateBegin != ''  ">
+   <![CDATA[
+    AND to_char(a.ADDED_TIME,'yyyy-mm-dd') >= #{addDateBegin}
+   ]]>
+  </if>  
+  <if test="addDateEnd !=null and  addDateEnd != ''  ">
+   <![CDATA[
+    AND to_char(a.ADDED_TIME,'yyyy-mm-dd') <= #{addDateEnd}
+   ]]>
+  </if>		
+<if test="pkid !=null and  pkid!='' ">
+and a.pkid= #{pkid}
+</if>
+</sql>
+
+<!-- 查询blog信息 -->
+<select id="getBlogs" resultType="com.dadahao.model.dto.Blog" parameterType="com.dadahao.model.base.BlogBo">
+select * from (
+       select temp.*,rownum rn from (
+		<include refid="getBlogColumn" /> 
+        <where>
+    		<include refid="queryCondiction" />
+		</where>
+        <![CDATA[
+			     ORDER BY a.ADDED_TIME desc, a.PKID desc
+			   ) temp where rownum <=#{end}
+		)
+   where rn >#{start}
+        ]]>
+</select>
+
+<!-- 查询blog数量 -->
+<select id="queryBlogCount" resultType="java.lang.Integer" parameterType="com.dadahao.model.base.BlogBo">
+select count(1) from tblogs a
+    <where>
+   		<include refid="queryCondiction" />
+	</where>
+</select>
+
+<!-- 导出blog -->
+<select id="exportBlogs" resultType="com.dadahao.model.dto.Blog" parameterType="com.dadahao.model.base.BlogBo">
+	<include refid="getBlogColumn" /> 
+	<where>
+	  		<include refid="queryCondiction" />
+	</where>
+</select>
+
+
+<!--添加blog -->
+<insert id="insertBlog" parameterType="com.dadahao.model.dto.Blog" >
+  <selectKey resultType="java.lang.Long" order="BEFORE" keyProperty="pkid">  
+       SELECT SEQ_BLOGS.nextval  from DUAL  
+   </selectKey>
+    insert into TBLOGS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkid != null" >
+        PKID,
+      </if>
+      <if test="blogText != null" >
+        blogtext,
+      </if>
+      <if test="blogHref != null" >
+        blogHref,
+      </if>
+      <if test="blogContent != null" >
+        blogContent,
+      </if>
+      <if test="blogSummary != null" >
+        blogSummary,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="valid != null" >
+        valid,
+      </if>
+      <if test="addedTime != null" >
+        added_time,
+      </if>
+      <if test="modifiedTime != null" >
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkid != null" >
+        #{pkid,jdbcType=INTEGER},
+      </if>
+      <if test="blogText != null" >
+        #{blogText,jdbcType=VARCHAR},
+      </if>
+      <if test="blogHref != null" >
+        #{blogHref,jdbcType=VARCHAR},
+      </if>
+      <if test="blogContent != null" >
+        #{blogContent,jdbcType=VARCHAR},
+      </if>
+      <if test="blogSummary != null" >
+        #{blogSummary,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>  
+      <if test="valid != null" >
+        #{valid,jdbcType=DECIMAL},
+      </if>    
+      <if test="addedTime != null" >
+        #{addedTime,jdbcType=TIMESTAMP},
+      </if>    
+      <if test="modifiedTime != null" >
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if> 
+    </trim>
+  </insert>
+
+<!--修改Blog -->
+<update id="updateBlog" parameterType="com.dadahao.model.dto.Blog" >
+update tblogs 
+<set>
+   <if test="blogText!=null">
+      blogtext=#{blogText,jdbcType=VARCHAR},
+   </if>
+   <if test="blogHref!=null">
+      bloghref=#{blogHref,jdbcType=VARCHAR},
+   </if>
+   <if test="blogContent!=null">
+      blogcontent=#{blogContent,jdbcType=VARCHAR},
+   </if>
+   <if test="blogSummary!=null">
+      blogsummary=#{blogSummary,jdbcType=VARCHAR},
+   </if>
+   <if test="remark!=null">
+      remark=#{remark,jdbcType=VARCHAR},
+   </if>
+   <if test="valid!=null">
+      valid=#{valid,jdbcType=VARCHAR},
+   </if>             
+      modified_time=SYSDATE
+</set>
+where pkid=#{pkid,jdbcType=INTEGER}
+</update>
+</mapper>

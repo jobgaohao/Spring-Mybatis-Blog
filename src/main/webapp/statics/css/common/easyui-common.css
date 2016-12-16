@@ -1,0 +1,109 @@
+
+.clearfix:after { content: '\20'; display: block; height: 0; clear: both }
+.clearfix { zoom: 1 }
+h1,h2,h3,h4,h5,h6{ margin:0; padding:0;}
+body{ font-family:微软雅黑;font-size:12px; background:#EBF2F8;}
+a{ color:#1d8fcc;}
+.red{ color:#f00;}
+
+.toolbar{ position:fixed; top:0; left:0; width:240px; height:100%; border-right:1px solid #95B8E7; background:#fff;}
+.toolbar .head{ position:relative; padding:0 25px; background:#CDE7F7; font-family:"微软雅黑";}
+.toolbar .head h1{ line-height:54px; font-size:18px; color:#1d8fcc;}
+.toolbar .head .logo{ display:inline-block; width:29px; height:29px; margin:0 10px 0 0; no-repeat; vertical-align:-7px;}
+.toolbar .head .change{ position:absolute; right:25px; top:18px; font-size:16px; color:#1d8fcc; cursor:pointer;}
+.toolbar .head .change:hover{ opacity:.8;}
+.toolbar .head .change i{ display:inline-block; width:16px; height:16px; margin:0 0 0 2px;}
+.toolbar .head .name{ padding:0 0 15px; line-height:20px; font-size:16px; color:#666; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.toolbar .head .name a{ float:right; color:#999; font-size:12px;}
+.toolbar .head .option{ height:40px; line-height:40px; color:#666;}
+.toolbar .head .option .one{ float:right; display:block; width:63px; height:40px; text-align:right;}
+.toolbar .head .option .one:nth-child(2){ text-align:center;}
+.toolbar .head .option .one:nth-child(3){ text-align:left;}
+.toolbar .head .option .one a{ color:#666; text-decoration:none;}
+.toolbar .head .option .one a:hover{ opacity:.8;}
+.toolbar .head .option .one i{ margin:0 4px 0 0; font-size:14px; color:#1d8fcc;}
+
+.toolbar.retract{ width:52px;}
+.toolbar.retract .head{ height:100%; padding:0 15px; background:#D3EEFF; font-weight:normal; text-align:center;}
+.toolbar.retract .head h1{ padding:60px 0 0; line-height:24px; font-size:20px; font-weight:normal; color:#1d8fcc;}
+.toolbar.retract .head .logo{ position:relative; left:-10px; width:41px; height:41px; margin:0 0 10px; background:url(../img/logo.png) no-repeat;}
+.toolbar.retract .head .change{ right:20px; color:#097cb9;}
+
+.main{ padding:0 0 0 241px;}
+.main.retract{ padding:0 0 0 53px;}
+
+.zg_search{ padding:10px;}
+.zg_search.line{ border-top:1px solid #95B8E7; border-bottom:1px solid #95B8E7;}
+.zg_search th{ padding-left:10px; line-height:22px; font-size:12px; font-weight:normal; text-align:right; vertical-align:top;}
+.zg_search td{ vertical-align:top;}
+.zg_search .datebox_txt{ margin:0 2px; line-height:22px; color:#999; vertical-align:-1px;}
+.zg_search .datebox_txt.mg{ margin:0 -2px;}
+
+.zg_option{ padding:10px 10px 0; border-top:1px solid #95B8E7;}
+
+.zg_table{ padding:10px 10px 0;}
+.zg_table table{font-size:12px;}
+.zg_table.self th{ padding:0 0 0 10px; font-weight:normal; text-align:right;}
+.zg_table th.ttop{ line-height:26px; vertical-align:top;}
+.datagrid-sort-asc .datagrid-sort-icon{ display:inline-block; width:12px; padding:0;}
+.datagrid-sort-desc .datagrid-sort-icon{ display:inline-block; width:12px; padding:0;}
+.datagrid-chenkbox{ vertical-align:-2px;}
+.datagrid-text{ width:100px; height:18px; margin:0 0 0 5px; border:none;}
+.datagrid-row-selected{ background:#fff;}
+
+.zg_page{ margin:0 10px 10px; border:1px solid #95B8E7; border-top:none;}
+.zg_page.alone{ margin-top:10px; border-top:1px solid #95B8E7;}
+
+.zg_box{ padding:10px 10px 0;}
+.zg_box table{font-size:12px;}
+
+.upload{ width:98px; height:68px; cursor:pointer; position:relative; overflow:hidden;
+  color: #444;
+  background: #fafafa;
+  background-repeat: repeat-x;
+  border: 1px solid #bbb;
+  background: -webkit-linear-gradient(top,#ffffff 0,#eeeeee 100%);
+  background: -moz-linear-gradient(top,#ffffff 0,#eeeeee 100%);
+  background: -o-linear-gradient(top,#ffffff 0,#eeeeee 100%);
+  background: linear-gradient(to bottom,#ffffff 0,#eeeeee 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff,endColorstr=#eeeeee,GradientType=0);
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+.upload:hover {
+  background: #eaf2ff;
+  color: #000000;
+  border: 1px solid #b7d2ff;
+  filter: none;
+}
+.upload .icon-add{ left:41px;}
+.upload input{ position:absolute; top:0px; right:0px; height:68px; border:none; background:none; font-size:400px; opacity:0; filter:alpha(opacity=0); outline:0px; cursor:pointer;}
+.upload_img{ position:relative; width:98px; height:68px; border:1px solid #bbb; border-radius:5px 5px 5px 5px; cursor:pointer; overflow:hidden;}
+.upload_img .tool{ display:none; position:absolute; bottom:0; left:0; width:78px; height:16px; padding:0 10px; line-height:16px; background:rgba(0,0,0,.2);}
+.upload_img .tool a:hover{ text-decoration:none;}
+.upload_img .tool .edit{ position:relative; float:left; display:inline-block; width:24px; overflow:hidden;}
+.upload_img .tool .del{ float:right;}
+.upload_img .tool .edit input{ position:absolute; top:0px; right:0px; height:16px; border:none; background:none; font-size:400px; opacity:0; filter:alpha(opacity=0); outline:0px; cursor:pointer;}
+.upload_img .icon-ok{ position:absolute; right:4px; top:4px; width:16px; height:30px;}
+.upload_img .icon-ok.active{ display:block;}
+.upload_img:hover .tool{ display:block;}
+.upload_text{ display:inline-block; width:100px; line-height:30px; text-align:center;}
+
+.related_item{ float:left; width:160px; padding:10px;}
+.related_item .list{ height:180px; margin:10px 0 0; border:1px solid #95B8E7; border-radius:5px; overflow:hidden; overflow-y:auto;}
+.related_item .list a{ display:block; height:24px; padding:0 10px; line-height:24px; text-decoration:none; color:#333;}
+.related_item .list a:hover{ background:#eaf2ff;}
+.related_item .list a.active{ background:#ffe48d; color:#333;}
+.related_item p{ margin:0; line-height:22px; text-align:center;}
+.related_change{ float:left; width:65px; padding:90px 0 0;}
+.related_btn{ float:left; width:405px; padding:0 10px; text-align:right;}
+
+.panel-tool{ z-index:5;}
+
+.zg_loading{ height:16px; margin:10px 0 0; text-align:center;}
+.zg_loading img{ vertical-align:-4px;}
+
+.material_window table{font-size:12px;}
+.category_window table{font-size:12px;}

@@ -1,0 +1,54 @@
+/*
+  by leilei.gao
+  2015.12.8
+  因为要覆盖easyui样式，所以该样式要放在EasyUI样式后面引入
+*/
+
+/* 覆盖EasyUI样式.l-btn :按钮字体黑色*/
+.l-btn {
+  color: black;
+}
+
+/* 覆盖EasyUI.datagrid-header-row :EasyUI表格列头粗体 */
+.datagrid-header-row{
+  font-weight: bold;
+}
+
+/* easyui 字体改为黑色 */
+.datagrid-htable,
+.datagrid-btable,
+.datagrid-ftable {
+  color: #000000;
+}
+.panel-body{
+  color: #000000;
+}
+.panel-title{
+  color: #000000;
+}
+.tabs li a.tabs-inner{
+  color: #000000;
+}
+
+.tabs-title {
+  color: #000000;
+}
+
+/* 历史查询下拉框 start */
+.history_drop_box{position: relative;display: none;}
+.ul_box ul{
+  padding: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.history_drop_box li{list-style: none;cursor: pointer}
+.history_drop_box li:hover{color:#666;background-color:#F8F8F8;}
+.history_drop_box .ul_box{
+  position:absolute;left:0;top: -1px;z-index:999;width: 148px;
+  border:1px solid #D3DDE7;background-color:#fff;height:auto;margin:auto;overflow-x:hidden;}
+/* 历史查询下拉框 end */
+
+/* 自定义表格样式 */
+.dtable {border-right:1px solid #ddd;border-bottom:1px solid #ddd}
+.dtable td{border-left:1px solid #ddd;border-top:1px solid #ddd;padding: 3px;}
+
