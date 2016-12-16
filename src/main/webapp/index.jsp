@@ -1,5 +1,5 @@
 <html>
 	<body>
-		<span>HELLO  World!</span>
+		<span>HELLO  World! Hello SpringMVC</span>
 	</body>
 </html>
