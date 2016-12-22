@@ -1,5 +1,6 @@
 package com.dadahao.controller;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +19,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dadahao.common.util.PoiUtil;
@@ -29,6 +34,7 @@ import com.dadahao.model.dto.ToptAwaitActualPriint;
 import com.dadahao.model.form.AwaitPrintInvoiceQueryForm;
 import com.dadahao.model.form.QueryResult;
 import com.dadahao.service.BlogService;
+import com.sun.jdi.Method;
 
 
 
@@ -165,13 +171,59 @@ public class BlogController {
 		return queryResult;
     }
 	
-	@RequestMapping(value="/modifyBlog",produces="application/json;charset=UTF-8")
+	/**
+	 * 上传文件
+	 * @return
+	 */
+	@RequestMapping(value="/doUpload",produces="application/json;charset=UTF-8")
 	@ResponseBody
-	public QueryResult modifyBlog(@ModelAttribute Blog blog)
+	public QueryResult uploadFile(@RequestParam(value="fileUploda",required = false) MultipartFile file,
+			HttpServletRequest request)
 	{
 		QueryResult queryResult=new QueryResult();
-		boolean b=blogService.Modify(blog);
+		boolean b=false;
+		try {
+			if(file!=null&&file.getSize()>0){
+				//上传
+				String path="D:\\upload\\";//;request.getSession().getServletContext().getRealPath("upload");
+				String fileName=file.getOriginalFilename();
+				File targetFile=new File(path,fileName);
+				if(!targetFile.exists()){
+					targetFile.mkdirs();
+				}
+				file.transferTo(targetFile);
+				b=true;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		queryResult.setResult(b==true?"1":"0");
 		return queryResult;
 	}
+	
+	
+	/**
+	 * 修改
+	 * fileUploda:file的name
+	 * @param blog
+	 * @return
+	 */
+	@RequestMapping(value="/modifyBlog",produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public QueryResult modifyBlog(@ModelAttribute Blog blog)
+	{		
+		QueryResult queryResult=new QueryResult();
+		boolean b=false;
+		try {			
+		    b=blogService.Modify(blog);			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		queryResult.setResult(b==true?"1":"0");
+		return queryResult;
+	}
+	
+	
+	
 }

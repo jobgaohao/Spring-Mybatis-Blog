@@ -10,7 +10,7 @@
 </head>
 <body>
    <div class="easyui-layout" fit="true">
-         <form id="searchForm" method="post">
+         <form id="searchForm" method="post" >
               <table >
                  <tr>
                    <td>新增日期开始:</td>
@@ -68,7 +68,17 @@
                 <tr>
                     <th align="right">备注：</th>
                     <td><input id="inputRemark" name="inputRemark" class="easyui-textbox" type="text" style="width: 300px;height:50px;" maxlength="800" maxlength="4"></td>
-                </tr>              
+                </tr>
+                <tr>
+                    <th align="right">附件：</th>
+                    <td>
+                       <input id="fileUploda"  name="fileUploda" type="file" style="width:260px;" >
+                    </td>
+                </tr>  
+                <tr>
+                    <th></th>
+                    <td><span style="color:red">上传png文件</span></td>
+                </tr>            
                 <tr>
                     <th></th>
                     <td>
@@ -77,7 +87,7 @@
             <a href="javascript:void(0);" id="btn_Add_cancle" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" >取消</a>
                     </td>
                 </tr>
-            </table>       
+            </table>  
     </div>
 </body>
 </html>

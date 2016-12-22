@@ -9,3 +9,4 @@
 <script src="${base}/statics/js/common/easyUiValidate.js?version=${version}" type="text/javascript"></script>
 <script type="text/javascript" src="${base}/statics/js/common/jqueryExtends.js"></script>
 <#--<script type="text/javascript" src="${trackerJsUrl}"></script>-->
+<script src="${base}/statics/js/jquery/ajaxfileupload.js" type="text/javascript"></script>

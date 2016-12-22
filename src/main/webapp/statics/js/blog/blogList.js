@@ -160,8 +160,45 @@ var doEditBlog=function(){
 				query();
 				closeDialog();	
 			}
+	 		else{
+	 			$.messager.alert('提示信息', '修改失败!', 'info');				
+				MaskUtil.unmask();
+	 		}
 	 	}
 	 });   
+	
+	
+	var file=$("#fileUploda");
+    if($.trim(file.val())==''){           
+           return false;
+     }
+
+	
+    $.ajaxFileUpload({
+    	type:"get",
+    	url:base + "/blog/doUpload.action",			
+		secureuri:true,
+		enctype:'multipart/form-data',//注意一定要有该参数  
+		dataType: 'json',
+        fileElementId:'fileUploda',  
+		success: function(data){
+	 		if(data.result=="1"){
+				$.messager.alert('提示信息', '上传成功!', 'info');				
+				MaskUtil.unmask();
+				query();
+				closeDialog();	
+			}
+	 		else{
+	 			$.messager.alert('提示信息', '上传失败!', 'info');				
+				MaskUtil.unmask();
+	 		}
+	 	},
+	 	error: function(e) { 
+	 		console.log("modify error",e);
+	 		$.messager.alert('提示信息', '上传失败!', 'info');				
+			MaskUtil.unmask();
+	 	} 
+    });
 }
 
 
